@@ -10,9 +10,20 @@ import UIKit
 
 class CollectionItem: UICollectionViewCell {
 
+    @IBOutlet weak var sampleImage: UIImageView!
+    
+    @IBOutlet weak var imageLabel: UILabel!
+    
+    static var itemNumber = 1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imageLabel.text = "Item\(CollectionItem.itemNumber)"
+        sampleImage.backgroundColor = UIColor.blue
+        CollectionItem.itemNumber += 1
+        
     }
+    
 
 }

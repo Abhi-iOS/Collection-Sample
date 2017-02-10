@@ -8,12 +8,29 @@
 
 import UIKit
 
+//MARK: CoreCollectionViewController class that is sample example of collection view
 class CoreCollectionViewController: UIViewController {
 
+    @IBOutlet weak var coreCollection: UICollectionView!
+    
+    //MARK : View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        coreCollection.dataSource = self
+        coreCollection.delegate = self
+        
+        //Nib Registeration
+        let cellNib = UINib(nibName: "CollectionItem", bundle: nil)
+        coreCollection.register(cellNib, forCellWithReuseIdentifier: "CollectionItemID")
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 100, height: 100)
+        flowLayout.minimumLineSpacing = 2
+        flowLayout.minimumInteritemSpacing = 2
+        coreCollection.collectionViewLayout = flowLayout
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +49,28 @@ class CoreCollectionViewController: UIViewController {
     }
     */
 
+}
+
+extension CoreCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        
+        return 50
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionItemID", for: indexPath) as? CollectionItem else{ fatalError("Cell not found") }
+        
+        
+        //Modyfing Item Cell.
+
+        
+        return cell
+    }
+
+    
 }
