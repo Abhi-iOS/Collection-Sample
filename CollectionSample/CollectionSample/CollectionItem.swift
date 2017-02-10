@@ -20,8 +20,9 @@ class CollectionItem: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         imageLabel.text = "Item\(CollectionItem.itemNumber)"
-        sampleImage.backgroundColor = UIColor.blue
+        sampleImage.backgroundColor = UIColor.yellow
         CollectionItem.itemNumber += 1
+        sampleImage.layer.borderWidth = 2
         
     }
     

@@ -63,11 +63,7 @@ extension CoreCollectionViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionItemID", for: indexPath) as? CollectionItem else{ fatalError("Cell not found") }
-        
-        
-        //Modyfing Item Cell.
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionItemID", for: indexPath)
         
         return cell
     }
